@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body class="is-loading">
     <div class="page-shell">
       <aside class="sidebar panel">
         <a class="brand" href="#top">
@@ -47,11 +47,11 @@
         <section class="live-ribbon panel">
           <div>
             <p class="eyebrow">Live Read</p>
-            <h2 id="ribbon-title">The experiment is currently holding.</h2>
+            <h2 id="ribbon-title">Loading the latest experiment snapshot.</h2>
           </div>
           <div class="ribbon-meta">
-            <span class="ribbon-pill" id="phase-pill">Phase 2 Live</span>
-            <span class="ribbon-pill" id="updated-pill">Snapshot ready</span>
+            <span class="ribbon-pill" id="phase-pill">Loading phase...</span>
+            <span class="ribbon-pill" id="updated-pill">Fetching live data...</span>
           </div>
         </section>
 
@@ -68,17 +68,16 @@
             <div class="hero-status">
               <div>
                 <span class="label">Current phase</span>
-                <strong id="current-phase">Phase 2</strong>
+                <strong id="current-phase">Loading...</strong>
               </div>
               <div>
                 <span class="label">Next transition</span>
-                <strong id="countdown">00d 00h 00m 00s</strong>
+                <strong id="countdown">Loading...</strong>
               </div>
             </div>
 
             <p class="live-copy" id="live-summary">
-              Phase 2 is active. Participation is building while retained
-              capital remains strong relative to total inflows.
+              Pulling the latest phase, score, and participation data from the live tracker.
             </p>
           </div>
 
@@ -115,7 +114,7 @@
           </article>
           <article class="score-card panel">
             <span class="label">What changed</span>
-            <strong id="change-summary">Stable</strong>
+            <strong id="change-summary">Loading</strong>
             <p>The current interpretation of the latest refresh.</p>
           </article>
         </section>

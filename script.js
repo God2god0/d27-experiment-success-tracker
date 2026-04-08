@@ -441,6 +441,7 @@ function updateCountdown() {
 }
 
 function renderAll() {
+  document.body.classList.remove("is-loading");
   renderRibbon();
   renderSummary();
   renderHealth();

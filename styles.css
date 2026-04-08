@@ -34,6 +34,14 @@ body {
     linear-gradient(180deg, #020202 0%, #050505 52%, #080808 100%);
 }
 
+body.is-loading #dashboard strong,
+body.is-loading .hero-status strong,
+body.is-loading #phase-pill,
+body.is-loading #updated-pill,
+body.is-loading #change-summary {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 body::before {
   content: "";
   position: fixed;
