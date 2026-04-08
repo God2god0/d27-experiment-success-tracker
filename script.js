@@ -1,23 +1,25 @@
+const CACHE_KEY = "d27-live-cache-v1";
+
 const fallbackData = {
-  phase: "Phase 2",
-  deadlineLabel: "Phase 2 deadline",
-  deadlineStatus: "Deadline reached",
+  phase: "Loading...",
+  deadlineLabel: "Next transition",
+  deadlineStatus: "Loading",
   nextTransitionIso: null,
   totals: {
-    raisedEth: 7.4148,
-    retainedEth: 7.4148,
-    participants: 56,
-    transfers: 56,
+    raisedEth: 0,
+    retainedEth: 0,
+    participants: 0,
+    transfers: 0,
     defectionRate: 0,
     refundCount: 0,
-    avgTicket: 0.1324,
-    topWalletShare: 13.5
+    avgTicket: 0,
+    topWalletShare: 0
   },
   curves: {
-    raised: [0.22, 0.6, 1.35, 2.14, 3.05, 4.1, 5.22, 6.41, 7.41],
-    entries: [2, 6, 9, 13, 19, 27, 38, 47, 56],
-    exits: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    labels: ["16:00", "17:00", "18:30", "20:00", "21:30", "23:00", "00:00", "01:30", "03:00"]
+    raised: [0],
+    entries: [0],
+    exits: [0],
+    labels: ["Loading"]
   },
   health: [],
   timeline: [],
@@ -29,28 +31,28 @@ const fallbackData = {
     statusWarning: ""
   },
   analytics: {
-    phaseCap: 72,
-    maturityWeight: 0.75,
-    topShare: 13.5,
-    topFiveShare: 46.5,
-    hhi: 0.059,
-    lateShare: 41.6,
-    recentBreadth: 25,
-    commitmentRatio: 100,
+    phaseCap: 0,
+    maturityWeight: 0,
+    topShare: 0,
+    topFiveShare: 0,
+    hhi: 0,
+    lateShare: 0,
+    recentBreadth: 0,
+    commitmentRatio: 0,
     componentScores: {
-      commitment: 100,
-      breadth: 100,
-      concentration: 99,
-      momentum: 95,
-      defensibility: 92
+      commitment: 0,
+      breadth: 0,
+      concentration: 0,
+      momentum: 0,
+      defensibility: 0
     }
   },
   scores: {
-    successScore: 72,
-    failureRisk: 16,
-    changeSummary: "Constructive",
-    ribbonTitle: "The experiment is holding, but still under active test.",
-    confidence: 70
+    successScore: 0,
+    failureRisk: 0,
+    changeSummary: "Loading",
+    ribbonTitle: "Loading the latest experiment snapshot.",
+    confidence: 0
   },
   history: [],
   lastUpdatedIso: null,
@@ -58,6 +60,24 @@ const fallbackData = {
 };
 
 let experimentData = structuredClone(fallbackData);
+
+function readCachedData() {
+  try {
+    const raw = window.localStorage.getItem(CACHE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (_error) {
+    return null;
+  }
+}
+
+function writeCachedData(data) {
+  try {
+    window.localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+  } catch (_error) {
+    // ignore storage write failures
+  }
+}
 
 function formatEth(value) {
   return `${Number(value).toFixed(4)} ETH`;
@@ -159,7 +179,7 @@ function renderHealth() {
         timeZone: "UTC",
         hour12: false
       })} UTC.`
-    : "Using fallback snapshot.";
+    : "Waiting for live snapshot.";
 
   statusCopy.innerHTML = `
     <div class="highlight">
@@ -456,14 +476,12 @@ function renderAll() {
 
 async function loadLiveData() {
   try {
-    let response = await fetch(`/api/data?ts=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) {
-      response = await fetch(`./data.json?ts=${Date.now()}`, { cache: "no-store" });
-    }
+    const response = await fetch(`/api/data?ts=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     experimentData = await response.json();
+    writeCachedData(experimentData);
   } catch (_error) {
-    experimentData = structuredClone(fallbackData);
+    experimentData = readCachedData() ?? structuredClone(fallbackData);
   }
   renderAll();
 }
