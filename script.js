@@ -97,8 +97,10 @@ function renderRibbon() {
   const updated = experimentData.lastUpdatedIso
     ? `Updated ${new Date(experimentData.lastUpdatedIso).toLocaleTimeString("en-GB", {
         hour: "2-digit",
-        minute: "2-digit"
-      })}`
+        minute: "2-digit",
+        timeZone: "UTC",
+        hour12: false
+      })} UTC`
     : "Snapshot ready";
 
   setText("ribbon-title", ribbonTitle);
@@ -153,8 +155,10 @@ function renderHealth() {
   const updatedText = experimentData.lastUpdatedIso
     ? `Last refreshed ${new Date(experimentData.lastUpdatedIso).toLocaleString("en-GB", {
         dateStyle: "medium",
-        timeStyle: "short"
-      })}.`
+        timeStyle: "short",
+        timeZone: "UTC",
+        hour12: false
+      })} UTC.`
     : "Using fallback snapshot.";
 
   statusCopy.innerHTML = `
