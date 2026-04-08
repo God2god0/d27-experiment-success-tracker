@@ -1,0 +1,198 @@
+{
+  "phase": "Phase 2",
+  "deadlineLabel": "Phase 2 deadline",
+  "deadlineStatus": "reached",
+  "nextTransitionIso": "2026-04-08T04:00:00Z",
+  "totals": {
+    "raisedEth": 7.4148,
+    "retainedEth": 7.4148,
+    "participants": 56,
+    "transfers": 56,
+    "defectionRate": 0,
+    "refundCount": 0,
+    "avgTicket": 0.1324,
+    "topWalletShare": 13.5
+  },
+  "curves": {
+    "raised": [
+      2.639,
+      3.1047,
+      3.7557,
+      4.2204,
+      4.4314,
+      5.8882,
+      7.0832,
+      7.4148
+    ],
+    "entries": [
+      7,
+      14,
+      21,
+      28,
+      35,
+      42,
+      49,
+      56
+    ],
+    "exits": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "labels": [
+      "16:03",
+      "16:15",
+      "17:32",
+      "20:07",
+      "20:46",
+      "21:40",
+      "00:28",
+      "02:40"
+    ]
+  },
+  "scores": {
+    "successScore": 72,
+    "failureRisk": 16,
+    "changeSummary": "Constructive",
+    "ribbonTitle": "The experiment is holding, but still under active test.",
+    "confidence": 70,
+    "note": "Phase 2 scores are phase-aware and capped by stage maturity."
+  },
+  "analytics": {
+    "phaseCap": 72,
+    "maturityWeight": 0.75,
+    "topShare": 13.5,
+    "topFiveShare": 46.5,
+    "hhi": 0.059,
+    "lateShare": 41.6,
+    "recentBreadth": 25,
+    "commitmentRatio": 100,
+    "componentScores": {
+      "commitment": 100,
+      "breadth": 100,
+      "concentration": 99,
+      "momentum": 100,
+      "defensibility": 100
+    }
+  },
+  "health": [
+    {
+      "title": "Commitment",
+      "state": "Strong",
+      "copy": "Entered capital is still staying in the structure, which supports the commitment thesis so far."
+    },
+    {
+      "title": "Distribution",
+      "state": "Strong",
+      "copy": "Participation remains relatively broad, which reduces early concentration risk."
+    },
+    {
+      "title": "Momentum",
+      "state": "Strong",
+      "copy": "Demand is still building with enough breadth to read the phase as active rather than exhausted."
+    },
+    {
+      "title": "Defensibility",
+      "state": "Strong",
+      "copy": "The raise profile is building a more credible path into TGE than a fragile sprint structure would."
+    }
+  ],
+  "timeline": [
+    {
+      "tag": "Phase 1",
+      "time": "Apr 3",
+      "title": "Opening speculative round",
+      "copy": "10% of supply opened the experiment and established the base valuation anchor.",
+      "active": false
+    },
+    {
+      "tag": "Interphase 1",
+      "time": "Apr 4",
+      "title": "Full refund window",
+      "copy": "Phase 1 participants could fully exit before the ladder stages began.",
+      "active": false
+    },
+    {
+      "tag": "Phase 2",
+      "time": "Apr 7",
+      "title": "First ladder round",
+      "copy": "5% of supply at 1.5x the Phase 1 anchor. This phase sets the tone for ongoing commitment.",
+      "active": true
+    },
+    {
+      "tag": "Interphase 2",
+      "time": "Apr 8",
+      "title": "Defection-cost refund window",
+      "copy": "Participants may still leave, but exits now pay the 27% defection cost.",
+      "active": false
+    },
+    {
+      "tag": "Phase 5",
+      "time": "Apr 10",
+      "title": "Final speculative round",
+      "copy": "Residual supply rolls into the final round, where the market reveals whether conviction remains.",
+      "active": false
+    }
+  ],
+  "activity": [
+    {
+      "time": "02:40 UTC",
+      "title": "Wallet 0x4afaa6... entered 0.0448 ETH",
+      "copy": "Recorded at block 24,832,054 with transaction 0x6756dacc...."
+    },
+    {
+      "time": "01:58 UTC",
+      "title": "Wallet 0x02770a... entered 0.01 ETH",
+      "copy": "Recorded at block 24,831,846 with transaction 0x4fcc6ace...."
+    },
+    {
+      "time": "01:24 UTC",
+      "title": "Wallet 0x2498b3... entered 0.005 ETH",
+      "copy": "Recorded at block 24,831,677 with transaction 0xfcd768ec...."
+    },
+    {
+      "time": "01:10 UTC",
+      "title": "Wallet 0x182f5f... entered 0.045 ETH",
+      "copy": "Recorded at block 24,831,608 with transaction 0xabf3f398...."
+    }
+  ],
+  "narrative": {
+    "heroSummary": "The first ladder round is testing whether commitment can survive beyond the opening phase and continue to attract capital.",
+    "statusIntro": "The live read is currently favorable: most core signals are still supporting the commitment model rather than undermining it.",
+    "statusDetail": "Success depends on whether the structure keeps capital committed, sustains participation across phases, limits destructive concentration, and leaves behind a defendable launch setup.",
+    "statusWarning": "So far there is no measurable exit wave. If that changes, the health layer will reflect it automatically."
+  },
+  "history": [
+    {
+      "capturedAt": "2026-04-08T04:33:23.845Z",
+      "phase": "Phase 2",
+      "raisedEth": 7.4148,
+      "participants": 56,
+      "successScore": 72,
+      "failureRisk": 16
+    },
+    {
+      "capturedAt": "2026-04-08T04:33:24.303Z",
+      "phase": "Phase 2",
+      "raisedEth": 7.4148,
+      "participants": 56,
+      "successScore": 72,
+      "failureRisk": 16
+    },
+    {
+      "capturedAt": "2026-04-08T04:50:42.592Z",
+      "phase": "Phase 2",
+      "raisedEth": 7.4148,
+      "participants": 56,
+      "successScore": 72,
+      "failureRisk": 16
+    }
+  ],
+  "lastUpdatedIso": "2026-04-08T04:50:42.592Z",
+  "sourceUrl": "https://www.d27exp.xyz/"
+}

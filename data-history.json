@@ -1,0 +1,26 @@
+[
+  {
+    "capturedAt": "2026-04-08T04:33:23.845Z",
+    "phase": "Phase 2",
+    "raisedEth": 7.4148,
+    "participants": 56,
+    "successScore": 72,
+    "failureRisk": 16
+  },
+  {
+    "capturedAt": "2026-04-08T04:33:24.303Z",
+    "phase": "Phase 2",
+    "raisedEth": 7.4148,
+    "participants": 56,
+    "successScore": 72,
+    "failureRisk": 16
+  },
+  {
+    "capturedAt": "2026-04-08T04:50:42.592Z",
+    "phase": "Phase 2",
+    "raisedEth": 7.4148,
+    "participants": 56,
+    "successScore": 72,
+    "failureRisk": 16
+  }
+]

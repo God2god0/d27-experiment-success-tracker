@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D27 Live Experiment Tracker</title>
+    <meta
+      name="description"
+      content="A one-page live tracker for a commitment-based launch experiment."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar panel">
+        <a class="brand" href="#top">
+          <span class="brand-mark"></span>
+          <span>D27 Live Tracker</span>
+        </a>
+        <p class="sidebar-copy">
+          Follow the experiment live and read its success or failure signals as
+          they emerge.
+        </p>
+        <nav class="nav">
+          <a href="#dashboard">Dashboard</a>
+          <a href="#health">Health</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#articles">Articles</a>
+          <a href="#algorithm">Experiment Algorithm</a>
+        </nav>
+        <div class="sidebar-disclaimer">
+          <p class="eyebrow">Disclaimer</p>
+          <p>
+            Independent tracker. Not affiliated with or officially operated by
+            xbt2027.
+          </p>
+        </div>
+      </aside>
+
+      <main id="top" class="content">
+        <section class="live-ribbon panel">
+          <div>
+            <p class="eyebrow">Live Read</p>
+            <h2 id="ribbon-title">The experiment is currently holding.</h2>
+          </div>
+          <div class="ribbon-meta">
+            <span class="ribbon-pill" id="phase-pill">Phase 2 Live</span>
+            <span class="ribbon-pill" id="updated-pill">Snapshot ready</span>
+          </div>
+        </section>
+
+        <section class="hero">
+          <div class="hero-copy panel">
+            <p class="eyebrow">Commitment-Based Launch Observatory</p>
+            <h1>The experiment is live, and its structure is measurable.</h1>
+            <p class="lede">
+              Track whether the experiment is holding, weakening, or proving
+              itself in real time through live metrics, retention signals,
+              timeline checkpoints, and experiment health indicators.
+            </p>
+
+            <div class="hero-status">
+              <div>
+                <span class="label">Current phase</span>
+                <strong id="current-phase">Phase 2</strong>
+              </div>
+              <div>
+                <span class="label">Next transition</span>
+                <strong id="countdown">00d 00h 00m 00s</strong>
+              </div>
+            </div>
+
+            <p class="live-copy" id="live-summary">
+              Phase 2 is active. Participation is building while retained
+              capital remains strong relative to total inflows.
+            </p>
+          </div>
+
+          <aside class="hero-aside panel">
+            <div class="mini-stat">
+              <span class="label">Total raised</span>
+              <strong id="total-raised">0.00 ETH</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Retained capital</span>
+              <strong id="retained-capital">0.00 ETH</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Unique participants</span>
+              <strong id="participants">0</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Defection rate</span>
+              <strong id="defection-rate">0%</strong>
+            </div>
+          </aside>
+        </section>
+
+        <section class="score-strip">
+          <article class="score-card panel">
+            <span class="label">Success score</span>
+            <strong id="success-score">0</strong>
+            <p>Live estimate of whether the structure is validating its thesis.</p>
+          </article>
+          <article class="score-card panel">
+            <span class="label">Failure risk</span>
+            <strong id="failure-score">0</strong>
+            <p>Live estimate of whether exits, thin demand, or concentration are weakening the run.</p>
+          </article>
+          <article class="score-card panel">
+            <span class="label">What changed</span>
+            <strong id="change-summary">Stable</strong>
+            <p>The current interpretation of the latest refresh.</p>
+          </article>
+        </section>
+
+        <section class="metrics" id="dashboard">
+          <article class="metric-card panel">
+            <span class="label">Net commitment</span>
+            <strong id="net-commitment">0%</strong>
+            <p>Share of entered capital still committed to the experiment.</p>
+          </article>
+          <article class="metric-card panel">
+            <span class="label">Refund requests</span>
+            <strong id="refund-count">0</strong>
+            <p>Observed exits across active and completed refund windows.</p>
+          </article>
+          <article class="metric-card panel">
+            <span class="label">Avg contribution</span>
+            <strong id="avg-ticket">0 ETH</strong>
+            <p>Mean wallet contribution across all indexed phase entries.</p>
+          </article>
+          <article class="metric-card panel">
+            <span class="label">Top wallet share</span>
+            <strong id="top-share">0%</strong>
+            <p>Concentration check for early supply capture risk.</p>
+          </article>
+        </section>
+
+        <section class="grid-two">
+          <article class="panel chart-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Capital Curve</p>
+                <h2>Raised over time</h2>
+              </div>
+              <span class="chart-note">Cumulative ETH</span>
+            </div>
+            <div id="raised-chart" class="chart"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Participation Curve</p>
+                <h2>Participant growth over time</h2>
+              </div>
+              <span class="chart-note">Unique wallets</span>
+            </div>
+            <div id="flow-chart" class="chart"></div>
+          </article>
+        </section>
+
+        <section class="grid-two">
+          <article class="panel chart-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Concentration</p>
+                <h2>Top 5 wallet share</h2>
+              </div>
+              <span class="chart-note">Supply capture risk</span>
+            </div>
+            <div id="concentration-chart" class="mini-chart"></div>
+          </article>
+          <article class="panel chart-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Participation</p>
+                <h2>Growth reading</h2>
+              </div>
+              <span class="chart-note">Interpretation</span>
+            </div>
+            <div class="benchmark-list" id="growth-reading"></div>
+          </article>
+        </section>
+
+        <section class="grid-two" id="health">
+          <article class="panel health-panel">
+            <div class="panel-head">
+              <div>
+            <p class="eyebrow">Experiment Health</p>
+                <h2>Success and failure can be tracked live, not guessed after the fact.</h2>
+              </div>
+            </div>
+            <div class="health-grid" id="health-grid"></div>
+          </article>
+
+          <article class="panel status-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Live Interpretation</p>
+                <h2>How the run is reading so far</h2>
+              </div>
+            </div>
+            <div class="status-copy" id="status-copy"></div>
+          </article>
+        </section>
+
+        <section class="timeline-section panel" id="timeline">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Phase Timeline</p>
+              <h2>Structured progression from opening bids to final round</h2>
+            </div>
+          </div>
+          <div class="timeline" id="timeline-list"></div>
+        </section>
+
+        <section class="grid-two">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Live Feed</p>
+                <h2>Recent experiment activity</h2>
+              </div>
+            </div>
+            <div class="activity-feed" id="activity-feed"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Method</p>
+                <h2>How this tracker reads success and failure</h2>
+              </div>
+            </div>
+            <ul class="method-list">
+              <li>Commitment shows whether participants stay in or begin to break.</li>
+              <li>Distribution shows whether the structure stays broad or becomes concentrated.</li>
+              <li>Momentum shows whether later phases still attract demand or start fading.</li>
+              <li>Defensibility shows whether the raise is building a credible path into TGE.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="articles-section panel" id="articles">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Reading Layer</p>
+              <h2>The idea, the game, the strategy</h2>
+            </div>
+          </div>
+          <div class="article-grid">
+            <article class="article-card">
+              <span class="article-kicker">Article 1</span>
+              <h3>The Idea</h3>
+              <p>
+                A critique of auctions and bonding curves, and the case for a
+                commitment-based launch structure that aligns early believers.
+              </p>
+            </article>
+            <article class="article-card">
+              <span class="article-kicker">Article 2</span>
+              <h3>The Game</h3>
+              <p>
+                A five-phase experiment with refund windows, ladder pricing,
+                rollover supply, and a fixed defection cost to test behavior in
+                public.
+              </p>
+            </article>
+            <article class="article-card">
+              <span class="article-kicker">Article 3</span>
+              <h3>The Grand Strategy</h3>
+              <p>
+                A broader infrastructure vision where commitment models become
+                reusable launch primitives across ecosystems.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="articles-section panel" id="algorithm">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Experiment Algorithm</p>
+              <h2>How the live scoring model actually works</h2>
+            </div>
+          </div>
+          <div class="grid-two">
+            <article class="panel inner-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Score Breakdown</p>
+                  <h3>Why the model reads what it reads</h3>
+                </div>
+              </div>
+              <div class="breakdown-list" id="score-breakdown"></div>
+            </article>
+            <article class="panel inner-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Benchmark Layer</p>
+                  <h3>How this phase is judged</h3>
+                </div>
+              </div>
+              <div class="benchmark-list" id="benchmark-list"></div>
+            </article>
+          </div>
+          <div class="grid-two">
+            <article class="panel inner-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Trend Memory</p>
+                  <h3>What changed across recent refreshes</h3>
+                </div>
+              </div>
+              <div class="trend-grid" id="trend-grid"></div>
+            </article>
+            <article class="panel inner-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Model Note</p>
+                  <h3>What this algorithm is trying to prevent</h3>
+                </div>
+              </div>
+              <div class="algorithm-note">
+                <p>
+                  The scoring model is intentionally conservative. It is designed to avoid calling the experiment
+                  a full success too early, especially before refund windows and later rounds have tested holder behavior.
+                </p>
+                <p>
+                  In other words, the model rewards commitment and breadth, but it also keeps uncertainty alive until
+                  the phase structure matures enough to deserve stronger confidence.
+                </p>
+              </div>
+            </article>
+          </div>
+          <div class="grid-two">
+            <article class="article-card">
+              <span class="article-kicker">Inputs</span>
+              <h3>What the model reads</h3>
+              <p>
+                The model reads retained capital, participant breadth, wallet concentration, late-phase momentum,
+                and stage maturity. It does not treat total raised alone as proof of success.
+              </p>
+            </article>
+            <article class="article-card">
+              <span class="article-kicker">Method</span>
+              <h3>How the score is built</h3>
+              <p>
+                Each signal is converted into a normalized component score, then combined with weights.
+                The result is capped by phase so early rounds cannot receive a false full-success reading.
+              </p>
+            </article>
+            <article class="article-card">
+              <span class="article-kicker">Success score</span>
+              <h3>What a high score means</h3>
+              <p>
+                A higher score means the structure is currently retaining capital, avoiding destructive concentration,
+                and sustaining enough demand to support the commitment thesis at this stage.
+              </p>
+            </article>
+            <article class="article-card">
+              <span class="article-kicker">Failure risk</span>
+              <h3>What the risk score means</h3>
+              <p>
+                Failure risk rises when exits appear, concentration worsens, later activity fades, or the experiment
+                is simply too early to justify confidence. Early-stage uncertainty is intentionally priced in.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="articles-section panel" id="disclaimer">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Disclaimer</p>
+              <h2>Independent tracker</h2>
+            </div>
+          </div>
+          <div class="algorithm-note">
+            <p>
+              This project is not affiliated with, endorsed by, or officially operated by xbt2027.
+            </p>
+            <p>
+              This website does not act as the official transaction, payout, refund, or settlement tracker for D27. Those mechanics are tracked elsewhere.
+            </p>
+            <p>
+              This site is focused on the live analytical layer of the experiment: progress, structure, momentum, participation, concentration, and success or failure signals derived from the observed process.
+            </p>
+            <p>
+              The scoring model, health logic, and experiment interpretation shown here were independently designed for analytical purposes and are not provided, approved, or verified by xbt2027.
+            </p>
+            <p>
+              It should not be treated as the official source of settlement, allocation, legal claims, or final experiment outcomes.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
