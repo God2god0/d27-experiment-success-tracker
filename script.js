@@ -465,4 +465,4 @@ async function loadLiveData() {
 
 loadLiveData();
 setInterval(updateCountdown, 1000);
-setInterval(loadLiveData, 5 * 60 * 1000);
+setInterval(loadLiveData, 60 * 60 * 1000);
